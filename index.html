@@ -6,25 +6,27 @@
     <title>Adolescence | Officiële Band Website & Muziek</title>
     
     <meta name="description" content="Officiële website van de band Adolescence. Ontdek onze muziek op Spotify en Apple Music, bekijk de galerij en koop officiële merchandise. Blijf op de hoogte van shows en nieuw materiaal!">
-    <meta name="keywords" content="Adolescence, band, muziek, rock, album, singles, Spotify, Apple Music, merchandise, concerten, foto's, biografie">
+    <meta name="keywords" content="Adolescence, band, muziek, rock, pop, album, singles, Spotify, Apple Music, merchandise, concerten, foto's, biografie">
     <meta name="author" content="Adolescence Band">
     <link rel="canonical" href="https://www.adolescenceband.com/">
 
     <meta property="og:title" content="Adolescence | Officiële Band Website">
     <meta property="og:description" content="Ontdek de officiële website van de band Adolescence. Stream onze muziek, bekijk onze foto's en koop merchandise.">
-    <meta property="og:image" content="https://www.adolescenceband.com/images/491446660_17902141791170242_8690501463541552480_n..jpg">
+    <meta property="og:image" content="https://www.adolescenceband.com/images/491446660_17902141791170242_8690501463541552480_n.jpg">
     <meta property="og:url" content="https://www.adolescenceband.com/">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Adolescence | Officiële Band Website">
     <meta name="twitter:description" content="Ontdek de officiële website van de band Adolescence. Stream onze muziek, bekijk onze foto's en koop merchandise.">
-    <meta name="twitter:image" content="https://www.adolescenceband.com/images/491446660_17902141791170242_8690501463541552480_n..jpg">
+    <meta name="twitter:image" content="https://www.adolescenceband.com/images/491446660_17902141791170242_8690501463541552480_n.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Algemene Stijlen & Fonts --- */
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap');
-
+        /* --- Basisstijlen en Variabelen --- */
         :root {
             --primary-color: #ffffff;
             --secondary-color: #aaaaaa;
@@ -44,25 +46,29 @@
             background-color: var(--background-color);
             color: var(--primary-color);
             line-height: 1.6;
-            overflow-x: hidden; /* Voorkomt horizontale scrollbalk op kleine schermen */
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1rem;
         }
 
         h1, h2 {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
-            margin-bottom: 1rem;
             font-weight: 700;
         }
 
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem); /* Schaalbare lettergrootte */
+            letter-spacing: 3px;
+        }
+
         h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
             text-align: center;
-            font-size: 2.5rem;
             margin-bottom: 3rem;
             color: var(--primary-color);
         }
@@ -71,7 +77,7 @@
             padding: 6rem 0;
             border-bottom: 1px solid #222;
         }
-        
+
         /* --- Navigatiebalk --- */
         .navbar {
             position: fixed;
@@ -79,12 +85,11 @@
             width: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Zorgt ervoor dat items kunnen wrappen op kleine schermen */
         }
 
         .navbar .logo {
@@ -94,13 +99,14 @@
             text-decoration: none;
         }
 
-        .navbar ul {
-            list-style: none;
+        .navbar .nav-links {
             display: flex;
+            list-style: none;
             gap: 1.5rem;
+            transition: transform 0.3s ease-in-out;
         }
-
-        .navbar ul li a {
+        
+        .navbar .nav-links li a {
             color: var(--primary-color);
             text-decoration: none;
             font-size: 1rem;
@@ -108,48 +114,101 @@
             transition: color 0.3s ease;
         }
 
-        .navbar ul li a:hover {
+        .navbar .nav-links li a:hover {
             color: var(--accent-color);
+        }
+
+        /* Hamburger Menu Icoon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+        }
+        
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Taal Schakelaar --- */
+        .language-switcher {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .language-switcher a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+        
+        .language-switcher a:hover,
+        .language-switcher a.active {
+            color: var(--primary-color);
         }
 
         /* --- Hero Sectie --- */
         #home {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/491446660_17902141791170242_8690501463541552480_n..jpg') no-repeat center center/cover;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/491446660_17902141791170242_8690501463541552480_n.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: var(--primary-color);
-            background-attachment: fixed; /* Verbeterd parallax-effect */
+            padding: 2rem;
         }
 
-        .hero-content h1 {
-            font-size: 6rem;
-            letter-spacing: 3px;
-            padding: 0 1rem; /* Voorkomt dat tekst de rand raakt op kleine schermen */
+        .hero-content {
+            margin-bottom: 2rem;
         }
 
-        /* --- About Sectie --- */
+        /* Boek ons knop */
+        .book-button {
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .book-button:hover {
+            background-color: #d13a00;
+            transform: scale(1.05);
+        }
+
+        /* --- Inhoudsecties Flex/Grid --- */
         #about p {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
             color: var(--secondary-color);
             font-size: 1.1rem;
-            padding: 0 1rem;
         }
 
-        /* --- Music Sectie --- */
-        .music-links {
+        .music-links, .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
             flex-wrap: wrap;
-            padding: 0 1rem;
+            gap: 2rem;
         }
 
-        .music-link {
+        .music-link, .contact-link {
             display: inline-flex;
             align-items: center;
             padding: 1rem 2rem;
@@ -160,8 +219,7 @@
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
             font-size: 1.2rem;
-            transition: background-color 0.3s, color 0.3s;
-            flex-basis: auto; /* Laat items krimpen en groeien */
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .music-link svg {
@@ -176,12 +234,10 @@
             border-color: var(--accent-color);
         }
 
-        /* --- Gallery Sectie --- */
-        .gallery-grid {
+        .gallery-grid, .merch-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            padding: 0 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
@@ -196,13 +252,8 @@
             transform: scale(1.05);
         }
 
-        /* --- Merch Sectie --- */
-        .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        .merch-item {
             text-align: center;
-            padding: 0 1rem;
         }
         
         .merch-item img {
@@ -224,30 +275,9 @@
             font-size: 1.2rem;
         }
 
-        /* --- Contact Sectie --- */
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 0 1rem;
-        }
-        
         .contact-link {
-            display: inline-block;
-            padding: 1rem 3rem;
             background-color: var(--accent-color);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            min-width: 300px;
-            text-align: center;
-            width: 100%; /* Zorgt ervoor dat contact links de volledige breedte nemen op mobiel */
-            max-width: 400px; /* Beperkt maximale breedte */
+            border: 2px solid var(--accent-color);
         }
         
         .contact-link:hover {
@@ -268,156 +298,68 @@
         .social-icons img {
             width: 30px;
             transition: opacity 0.3s;
+            filter: invert(1);
         }
 
         .social-icons img:hover {
             opacity: 0.7;
         }
 
-        /* --- Media Queries voor Responsiviteit --- */
-
-        /* Extra kleine schermen (bijv. mobiele telefoons in portretmodus) */
-        @media (max-width: 576px) {
-            .container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 3.5rem;
-                letter-spacing: 1px;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            /* Navigatie aanpassing voor kleine schermen */
+        /* --- Responsiviteit voor Mobiel --- */
+        @media (max-width: 768px) {
             .navbar {
-                flex-direction: column; /* Stapel logo en menu onder elkaar */
-                align-items: flex-start;
                 padding: 1rem;
             }
 
-            .navbar .logo {
-                margin-bottom: 1rem; /* Ruimte onder het logo */
-                font-size: 1.5rem;
-            }
-
-            .navbar ul {
-                flex-direction: column; /* Menu items onder elkaar */
+            .navbar .nav-links {
+                display: none; /* Verberg het menu op mobiel */
+                flex-direction: column;
+                position: absolute;
+                top: 60px; /* Onder de navbar */
+                left: 0;
                 width: 100%;
-                gap: 0.5rem;
-                display: none; /* Standaard verborgen, voor JS-toggler */
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 1rem 0;
+                border-top: 1px solid #333;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                gap: 0;
             }
 
-            .navbar ul.active { /* Voor JS om te tonen */
-                display: flex;
+            .navbar .nav-links.active {
+                display: flex; /* Toon het menu wanneer de 'active' class is toegevoegd */
             }
 
-            .navbar ul li {
+            .navbar .nav-links li {
                 width: 100%;
                 text-align: center;
             }
 
-            .navbar ul li a {
-                padding: 0.5rem 0;
-                display: block; /* Zorgt ervoor dat de hele link klikbaar is */
-                font-size: 0.9rem;
+            .navbar .nav-links li a {
+                padding: 0.8rem 1rem;
+                display: block;
             }
 
-            .music-link {
-                width: 100%;
-                justify-content: center; /* Centreer inhoud in de knop */
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr; /* Altijd 1 kolom op zeer kleine schermen */
-            }
-
-            .merch-grid {
-                grid-template-columns: 1fr; /* Altijd 1 kolom op zeer kleine schermen */
-            }
-
-            .merch-item h3 {
-                font-size: 1.3rem;
-            }
-
-            .merch-item .price {
-                font-size: 1rem;
-            }
-
-            .contact-link {
-                font-size: 1rem;
-                padding: 0.8rem 1.5rem;
-            }
-
-            footer p {
-                font-size: 0.8rem;
-            }
-
-            .social-icons {
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* Kleine schermen (bijv. mobiele telefoons in landschapmodus, kleine tablets) */
-        @media (min-width: 577px) and (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-
-            h1 {
-                font-size: 4.5rem;
-            }
-
-            h2 {
-                font-size: 2.2rem;
+            .hamburger {
+                display: block; /* Toon de hamburger op mobiel */
             }
 
             section {
                 padding: 4rem 0;
             }
 
-            .navbar ul {
-                gap: 1rem;
-            }
-
-            .music-link {
-                font-size: 1.1rem;
-            }
-
-            .gallery-grid, .merch-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Twee kolommen waar mogelijk */
-            }
-        }
-
-        /* Medium schermen (bijv. tablets) */
-        @media (min-width: 769px) and (max-width: 992px) {
-            .container {
-                padding: 1.5rem 3rem;
-            }
-
-            h1 {
-                font-size: 5rem;
-            }
-
             h2 {
-                font-size: 2.5rem;
+                margin-bottom: 2rem;
             }
 
-            .navbar ul {
-                gap: 1.2rem;
+            .music-links, .contact-links {
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .gallery-grid, .merch-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Drie kolommen waar mogelijk */
+
+            .music-link, .contact-link {
+                width: 80%; /* Zorgt ervoor dat de knoppen goed klikbaar zijn */
+                max-width: 350px;
+                justify-content: center;
             }
         }
     </style>
@@ -425,31 +367,40 @@
 <body>
 
     <nav class="navbar">
-        <a href="#home" class="logo">Adolescence</a>
+        <a href="#home" class="logo" data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</a>
+        
+        <div class="language-switcher">
+            <a href="#" class="lang-link active" data-lang="nl">NL</a>
+            <span>|</span>
+            <a href="#" class="lang-link" data-lang="en">EN</a>
+        </div>
+
         <button class="hamburger" aria-label="Toggle navigation menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#merch">Merch</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+        <ul class="nav-links">
+            <li><a href="#about" data-lang-nl="About" data-lang-en="About">About</a></li>
+            <li><a href="#music" data-lang-nl="Music" data-lang-en="Music">Music</a></li>
+            <li><a href="#gallery" data-lang-nl="Gallery" data-lang-en="Gallery">Gallery</a></li>
+            <li><a href="#merch" data-lang-nl="Merch" data-lang-en="Merch">Merch</a></li>
+            <li><a href="#contact" data-lang-nl="Contact" data-lang-en="Contact">Contact</a></li>
         </ul>
     </nav>
 
     <section id="home">
         <div class="hero-content">
-            <h1>Adolescence</h1>
+            <h1 data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</h1>
+            <a href="#contact" class="book-button" data-lang-nl="Boek ons voor jouw event" data-lang-en="Book us for your event">Boek ons voor jouw event</a>
         </div>
     </section>
 
     <section id="about">
         <div class="container">
-            <h2>About Us</h2>
-            <p>
+            <h2 data-lang-nl="About Us" data-lang-en="About Us">About Us</h2>
+            <p data-lang-nl="Hier komt de biografie van jullie band. Vertel jullie verhaal! Waar komen jullie vandaan, hoe hebben jullie elkaar ontmoet, wat voor muziek maken jullie en wat zijn jullie invloeden? Hou het boeiend en authentiek. Dit is de plek om een connectie te maken met je fans." data-lang-en="This is where your band's biography goes. Tell your story! Where do you come from, how did you meet, what kind of music do you make, and what are your influences? Keep it engaging and authentic. This is the place to connect with your fans.">
                 Hier komt de biografie van jullie band. Vertel jullie verhaal! Waar komen jullie vandaan, hoe hebben jullie elkaar ontmoet, wat voor muziek maken jullie en wat zijn jullie invloeden? Hou het boeiend en authentiek. Dit is de plek om een connectie te maken met je fans.
             </p>
         </div>
@@ -457,15 +408,15 @@
 
     <section id="music">
         <div class="container">
-            <h2>Our Music</h2>
+            <h2 data-lang-nl="Our Music" data-lang-en="Our Music">Our Music</h2>
             <div class="music-links">
-                <a href="https://open.spotify.com/artist/jouw_spotify_id" target="_blank" class="music-link">
+                <a href="#" target="_blank" class="music-link">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.17 14.283c-.202.32-.58.426-.898.224-2.633-1.63-5.92-1.89-9.84-.99-.387.09-.71-.163-.8-.55-.09-.387.163-.71.55-.8 4.29-.98 7.9-.69 10.82 1.1.32.202.426.58.224.898zm.9-2.69c-.25.398-.71.53-1.103.28-2.95-1.82-7.4-2.3-10.9-1.25-.466.13-.9-.15-1.03-.615-.13-.466.15-.9.615-1.03 3.9-.94 8.7-.44 11.95 1.6.4.247.53.71.28 1.103zm.1-2.88c-3.5-2.08-9.2-2.28-12.7.9-.53.22-1.12-.08-1.34-.6-.22-.53.08-1.12.6-1.34 4.02-2.88 10.32-2.63 14.32 1.25.48.28.63.88.35 1.36-.28.48-.88.63-1.36.35z"/></svg>
-                    Spotify
+                    <span data-lang-nl="Spotify" data-lang-en="Spotify">Spotify</span>
                 </a>
-                <a href="https://music.apple.com/us/artist/jouw_apple_id" target="_blank" class="music-link">
+                <a href="#" target="_blank" class="music-link">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1.5-11.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v4.25c0 .41-.34.75-.75.75s-.75-.34-.75-.75V9.5c0-.69-.56-1.25-1.25-1.25s-1.25.56-1.25 1.25v3.25c0 1.24-.73 2.33-1.82 2.82-.4.18-.84.28-1.28.28-1.66 0-3-1.34-3-3s1.34-3 3-3c.44 0 .88.1 1.28.28.37.17.8-.04.97-.41.17-.37-.04-.8-.41-.97C10.03 8.1 8.81 8 7.5 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V8.5z"/></svg>
-                    Apple Music
+                    <span data-lang-nl="Apple Music" data-lang-en="Apple Music">Apple Music</span>
                 </a>
             </div>
         </div>
@@ -473,20 +424,20 @@
     
     <section id="gallery">
         <div class="container">
-            <h2>Gallery</h2>
+            <h2 data-lang-nl="Gallery" data-lang-en="Gallery">Gallery</h2>
             <div class="gallery-grid">
-                <img src="images/467555942_1802739687129505_2360335379630859286_n..jpg" alt="Adolescence band foto 1: live optreden" class="gallery-item">
-                <img src="images/467762960_1809161503190234_6997691456845963636_n..jpg" alt="Adolescence band foto 2: backstage shot" class="gallery-item">
+                <img src="images/467555942_1802739687129505_2360335379630859286_n.jpg" alt="Adolescence band foto 1: live optreden" class="gallery-item">
+                <img src="images/467762960_1809161503190234_6997691456845963636_n.jpg" alt="Adolescence band foto 2: backstage shot" class="gallery-item">
                 <video controls class="gallery-item" aria-label="Een video van de band Adolescence tijdens een repetitie">
                     <source src="images/AQOzMBMYaFSzifTJxmWf6D3ze-BgtKpeEYfnGpPEElky9xKRzEtW2UwLzRvF_B38PgqXzWYA7O4e9fjEwzpcL_ZYiLfBtXzH.mp4" type="video/mp4">
                     Je browser ondersteunt de video tag niet.
                 </video>
-                <img src="images/486790686_17899309317170242_700672190784094738_n..jpg" alt="Adolescence band foto 3: Groepslid speelt gitaar" class="gallery-item">
+                <img src="images/486790686_17899309317170242_700672190784094738_n.jpg" alt="Adolescence band foto 3: Groepslid speelt gitaar" class="gallery-item">
                 <video controls class="gallery-item" aria-label="Korte promotievideo van de band">
-                    <source src="images/AQPuU5T1wLxfgTJWf9Hv3-ejt85A2vkbu1CjCDyxlhKRM_xHBcTtxBmE1y8oVpsyKfQfcFxthSq7pXBjNas9OxQe..mp4" type="video/mp4">
+                    <source src="images/AQPuU5T1wLxfgTJWf9Hv3-ejt85A2vkbu1CjCDyxlhKRM_xHBcTtxBmE1y8oVpsyKfQfcFxthSq7pXBjNas9OxQe.mp4" type="video/mp4">
                     Je browser ondersteunt de video tag niet.
                 </video>
-                <img src="images/487409169_17899309299170242_7710075461797943807_n..jpg" alt="Adolescence band foto 4: Portretfoto" class="gallery-item">
+                <img src="images/487409169_17899309299170242_7710075461797943807_n.jpg" alt="Adolescence band foto 4: Portretfoto" class="gallery-item">
                 <img src="images/491017472_17902141881170242_4097284793726784552_n.jpg" alt="Adolescence band foto 5: Bandleden in de studio" class="gallery-item">
                 <img src="images/491431513_17901699717170242_42262469079254598_n.jpg" alt="Adolescence band foto 6: Close-up van de drummer" class="gallery-item">
                 <img src="images/491439005_17901699708170242_6885235243774906310_n.jpg" alt="Adolescence band foto 7: Bandleden poseren" class="gallery-item">
@@ -503,22 +454,22 @@
     
     <section id="merch">
         <div class="container">
-            <h2>Merchandise</h2>
+            <h2 data-lang-nl="Merchandise" data-lang-en="Merchandise">Merchandise</h2>
             <div class="merch-grid">
                 <div class="merch-item">
                     <img src="images/491439005_17901699708170242_6885235243774906310_n.jpg" alt="Zwart T-shirt met het Adolescence band logo">
-                    <h3>Band Logo T-Shirt</h3>
-                    <p class="price">€25.00</p>
+                    <h3 data-lang-nl="Band Logo T-Shirt" data-lang-en="Band Logo T-Shirt">Band Logo T-Shirt</h3>
+                    <p class="price" data-lang-nl="€25.00" data-lang-en="€25.00">€25.00</p>
                 </div>
                 <div class="merch-item">
                     <img src="images/486790686_17899309317170242_700672190784094738_n.jpg" alt="Grijze hoodie met album artwork op de rug">
-                    <h3>Album Art Hoodie</h3>
-                    <p class="price">€50.00</p>
+                    <h3 data-lang-nl="Album Art Hoodie" data-lang-en="Album Art Hoodie">Album Art Hoodie</h3>
+                    <p class="price" data-lang-nl="€50.00" data-lang-en="€50.00">€50.00</p>
                 </div>
                 <div class="merch-item">
                     <img src="images/491017472_17902141881170242_4097284793726784552_n.jpg" alt="Zwarte pet met het Adolescence band logo op de voorkant">
-                    <h3>Logo Cap</h3>
-                    <p class="price">€20.00</p>
+                    <h3 data-lang-nl="Logo Cap" data-lang-en="Logo Cap">Logo Cap</h3>
+                    <p class="price" data-lang-nl="€20.00" data-lang-en="€20.00">€20.00</p>
                 </div>
             </div>
         </div>
@@ -526,35 +477,71 @@
 
     <section id="contact">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h2 data-lang-nl="Contact Us" data-lang-en="Contact Us">Contact Us</h2>
             <div class="contact-links">
-                <a href="https://wa.me/32000000000" target="_blank" class="contact-link">WhatsApp</a>
-                <a href="https://ig.me/m/jouw_instagram_naam" target="_blank" class="contact-link">Instagram DM</a>
-                <a href="mailto:contact@adolescenceband.com" class="contact-link">Email</a>
+                <a href="https://wa.me/32000000000" target="_blank" class="contact-link" data-lang-nl="WhatsApp" data-lang-en="WhatsApp">WhatsApp</a>
+                <a href="https://ig.me/m/jouw_instagram_naam" target="_blank" class="contact-link" data-lang-nl="Instagram DM" data-lang-en="Instagram DM">Instagram DM</a>
+                <a href="mailto:contact@adolescenceband.com" class="contact-link" data-lang-nl="Email" data-lang-en="Email">Email</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="social-icons">
-            <a href="https://www.instagram.com/jouw_instagram_naam/" target="_blank" aria-label="Volg ons op Instagram"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram logo" style="filter: invert(1);"></a>
-            <a href="https://www.facebook.com/jouw_facebook_naam/" target="_blank" aria-label="Volg ons op Facebook"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook logo" style="filter: invert(1);"></a>
-            <a href="https://www.tiktok.com/@jouw_tiktok_naam" target="_blank" aria-label="Volg ons op TikTok"><img src="https://simpleicons.org/icons/tiktok.svg" alt="TikTok logo" style="filter: invert(1);"></a>
+            <a href="https://www.instagram.com/jouw_instagram_naam/" target="_blank" aria-label="Volg ons op Instagram"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram logo"></a>
+            <a href="https://www.facebook.com/jouw_facebook_naam/" target="_blank" aria-label="Volg ons op Facebook"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook logo"></a>
+            <a href="https://www.tiktok.com/@jouw_tiktok_naam" target="_blank" aria-label="Volg ons op TikTok"><img src="https://simpleicons.org/icons/tiktok.svg" alt="TikTok logo"></a>
         </div>
-        <p>© 2025 Adolescence. All Rights Reserved.</p>
+        <p data-lang-nl="© 2025 Adolescence. Alle rechten voorbehouden." data-lang-en="© 2025 Adolescence. All Rights Reserved.">© 2025 Adolescence. Alle rechten voorbehouden.</p>
     </footer>
 
     <script>
-        // JavaScript voor het togglen van het mobiele navigatiemenu
         document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.querySelector('.hamburger');
-            const navUl = document.querySelector('.navbar ul');
-
-            if (hamburger && navUl) {
-                hamburger.addEventListener('click', function () {
-                    navUl.classList.toggle('active');
+            const navLinks = document.querySelector('.nav-links');
+            const langLinks = document.querySelectorAll('.lang-link');
+            const elementsToTranslate = document.querySelectorAll('[data-lang-nl]');
+            let currentLang = 'nl';
+            
+            // Functie om de taal te veranderen
+            function changeLanguage(lang) {
+                currentLang = lang;
+                elementsToTranslate.forEach(element => {
+                    if (element.dataset[`lang-${lang}`]) {
+                        element.textContent = element.dataset[`lang-${lang}`];
+                    }
                 });
+                document.documentElement.lang = lang; // Update de HTML lang attribute
+                langLinks.forEach(link => link.classList.remove('active'));
+                document.querySelector(`.lang-link[data-lang="${lang}"]`).classList.add('active');
             }
+            
+            // Initialiseer de taal bij het laden
+            changeLanguage(currentLang);
+
+            // Hamburger menu functionaliteit
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('is-active'); // Optionele animatie
+            });
+
+            // Taalwisselaar functionaliteit
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = e.target.dataset.lang;
+                    changeLanguage(lang);
+                });
+            });
+
+            // Sluit menu na het klikken op een link (mobiel)
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
         });
     </script>
 
