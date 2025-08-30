@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adolescence | Officiële Band Website</title>
-    <style>
+    <title>Adolescence | Officiële Band Website & Muziek</title>
+    
+    <meta name="description" content="Officiële website van de band Adolescence. Ontdek onze muziek op Spotify en Apple Music, bekijk de galerij en koop officiële merchandise. Blijf op de hoogte van shows en nieuw materiaal!">
+    <meta name="keywords" content="Adolescence, band, muziek, rock, album, singles, Spotify, Apple Music, merchandise, concerten, foto's, biografie">
+    <meta name="author" content="Adolescence Band">
+    <link rel="canonical" href="https://www.adolescenceband.com/"> <meta property="og:title" content="Adolescence | Officiële Band Website">
+    <meta property="og:description" content="Ontdek de officiële website van de band Adolescence. Stream onze muziek, bekijk onze foto's en koop merchandise.">
+    <meta property="og:image" content="https://www.adolescenceband.com/images/491446660_17902141791170242_8690501463541552480_n..jpg"> <meta property="og:url" content="https://www.adolescenceband.com/"> <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Adolescence | Officiële Band Website">
+    <meta name="twitter:description" content="Ontdek de officiële website van de band Adolescence. Stream onze muziek, bekijk onze foto's en koop merchandise.">
+    <meta name="twitter:image" content="https://www.adolescenceband.com/images/491446660_17902141791170242_8690501463541552480_n..jpg"> <style>
         /* --- Algemene Stijlen & Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
@@ -96,7 +107,6 @@
         /* --- Hero Sectie --- */
         #home {
             height: 100vh;
-            /* DEZE AFBEELDING IS GEKOZEN ALS JULLIE HOOFDFOTO */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/491446660_17902141791170242_8690501463541552480_n..jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
@@ -162,7 +172,7 @@
 
         .gallery-item {
             width: 100%;
-            height: 300px; /* Vaste hoogte voor uniformiteit */
+            height: 300px;
             object-fit: cover;
             border-radius: 5px;
             transition: transform 0.3s ease;
@@ -245,6 +255,47 @@
         .social-icons img:hover {
             opacity: 0.7;
         }
+
+        /* --- Media Queries voor Mobiel --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem; /* H1 verkleind voor kleinere schermen */
+            }
+
+            h2 {
+                font-size: 2rem; /* H2 verkleind voor kleinere schermen */
+                margin-bottom: 2rem;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar ul {
+                display: none; /* Menu standaard verbergen op mobiel */
+            }
+            /* Je zou hier een "hamburger menu" kunnen toevoegen met JavaScript */
+
+            .container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 4rem 0; /* Minder padding op mobiel */
+            }
+
+            .gallery-grid, .merch-grid {
+                grid-template-columns: 1fr; /* 1 kolom op mobiel */
+            }
+
+            .merch-item img {
+                height: auto; /* Afbeeldingen flexibeler maken */
+            }
+            
+            .contact-link {
+                min-width: 100%; /* Links nemen volledige breedte in op mobiel */
+            }
+        }
     </style>
 </head>
 <body>
@@ -279,11 +330,11 @@
         <div class="container">
             <h2>Our Music</h2>
             <div class="music-links">
-                <a href="#" target="_blank" class="music-link">
+                <a href="https://open.spotify.com/artist/jouw_spotify_id" target="_blank" class="music-link">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.17 14.283c-.202.32-.58.426-.898.224-2.633-1.63-5.92-1.89-9.84-.99-.387.09-.71-.163-.8-.55-.09-.387.163-.71.55-.8 4.29-.98 7.9-.69 10.82 1.1.32.202.426.58.224.898zm.9-2.69c-.25.398-.71.53-1.103.28-2.95-1.82-7.4-2.3-10.9-1.25-.466.13-.9-.15-1.03-.615-.13-.466.15-.9.615-1.03 3.9-.94 8.7-.44 11.95 1.6.4.247.53.71.28 1.103zm.1-2.88c-3.5-2.08-9.2-2.28-12.7.9-.53.22-1.12-.08-1.34-.6-.22-.53.08-1.12.6-1.34 4.02-2.88 10.32-2.63 14.32 1.25.48.28.63.88.35 1.36-.28.48-.88.63-1.36.35z"/></svg>
                     Spotify
                 </a>
-                <a href="#" target="_blank" class="music-link">
+                <a href="https://music.apple.com/us/artist/jouw_apple_id" target="_blank" class="music-link">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1.5-11.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v4.25c0 .41-.34.75-.75.75s-.75-.34-.75-.75V9.5c0-.69-.56-1.25-1.25-1.25s-1.25.56-1.25 1.25v3.25c0 1.24-.73 2.33-1.82 2.82-.4.18-.84.28-1.28.28-1.66 0-3-1.34-3-3s1.34-3 3-3c.44 0 .88.1 1.28.28.37.17.8-.04.97-.41.17-.37-.04-.8-.41-.97C10.03 8.1 8.81 8 7.5 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V8.5z"/></svg>
                     Apple Music
                 </a>
@@ -295,25 +346,28 @@
         <div class="container">
             <h2>Gallery</h2>
             <div class="gallery-grid">
-                <img src="images/467555942_1802739687129505_2360335379630859286_n..jpg" alt="Gallery image 1" class="gallery-item">
-                <img src="images/467762960_1809161503190234_6997691456845963636_n..jpg" alt="Gallery image 2" class="gallery-item">
-                <video controls class="gallery-item">
+                <img src="images/467555942_1802739687129505_2360335379630859286_n..jpg" alt="Adolescence band foto 1: live optreden" class="gallery-item">
+                <img src="images/467762960_1809161503190234_6997691456845963636_n..jpg" alt="Adolescence band foto 2: backstage shot" class="gallery-item">
+                <video controls class="gallery-item" aria-label="Een video van de band Adolescence tijdens een repetitie">
                     <source src="images/AQOzMBMYaFSzifTJxmWf6D3ze-BgtKpeEYfnGpPEElky9xKRzEtW2UwLzRvF_B38PgqXzWYA7O4e9fjEwzpcL_ZYiLfBtXzH.mp4" type="video/mp4">
+                    Je browser ondersteunt de video tag niet.
                 </video>
-                <img src="images/486790686_17899309317170242_700672190784094738_n..jpg" alt="Gallery image 3" class="gallery-item">
-                <video controls class="gallery-item">
+                <img src="images/486790686_17899309317170242_700672190784094738_n..jpg" alt="Adolescence band foto 3: Groepslid speelt gitaar" class="gallery-item">
+                <video controls class="gallery-item" aria-label="Korte promotievideo van de band">
                     <source src="images/AQPuU5T1wLxfgTJWf9Hv3-ejt85A2vkbu1CjCDyxlhKRM_xHBcTtxBmE1y8oVpsyKfQfcFxthSq7pXBjNas9OxQe..mp4" type="video/mp4">
+                    Je browser ondersteunt de video tag niet.
                 </video>
-                <img src="images/487409169_17899309299170242_7710075461797943807_n..jpg" alt="Gallery image 4" class="gallery-item">
-                <img src="images/491017472_17902141881170242_4097284793726784552_n..jpg" alt="Gallery image 5" class="gallery-item">
-                <img src="images/491431513_17901699717170242_42262469079254598_n..jpg" alt="Gallery image 6" class="gallery-item">
-                <img src="images/491439005_17901699708170242_6885235243774906310_n..jpg" alt="Gallery image 7" class="gallery-item">
-                <video controls class="gallery-item">
+                <img src="images/487409169_17899309299170242_7710075461797943807_n..jpg" alt="Adolescence band foto 4: Portretfoto" class="gallery-item">
+                <img src="images/491017472_17902141881170242_4097284793726784552_n.jpg" alt="Adolescence band foto 5: Bandleden in de studio" class="gallery-item">
+                <img src="images/491431513_17901699717170242_42262469079254598_n.jpg" alt="Adolescence band foto 6: Close-up van de drummer" class="gallery-item">
+                <img src="images/491439005_17901699708170242_6885235243774906310_n.jpg" alt="Adolescence band foto 7: Bandleden poseren" class="gallery-item">
+                <video controls class="gallery-item" aria-label="Een fragment van een live optreden van de band">
                     <source src="images/AQNBrESAtxEu5vS5CtL8WmII1oSF1-8QgkV6UXX_N1iD7aE4Wdq_rTVxo8bY9i7qNPlrFVNcz_IBJTH-_h56ub4e4ysrTSfx.mp4" type="video/mp4">
+                    Je browser ondersteunt de video tag niet.
                 </video>
-                <img src="images/491440142_17902141839170242_553274269014194057_n..jpg" alt="Gallery image 8" class="gallery-item">
-                <img src="images/491436259_17902141848170242_2048863188384419840_n..jpg" alt="Gallery image 9" class="gallery-item">
-                <img src="images/491446660_17902141791170242_8690501463541552480_n..jpg" alt="Gallery image 10" class="gallery-item">
+                <img src="images/491440142_17902141839170242_553274269014194057_n.jpg" alt="Adolescence band foto 8: Live shot met publiek" class="gallery-item">
+                <img src="images/491436259_17902141848170242_2048863188384419840_n.jpg" alt="Adolescence band foto 9: Zanger staat op podium" class="gallery-item">
+                <img src="images/491446660_17902141791170242_8690501463541552480_n.jpg" alt="Adolescence band foto 10: Promotie foto van de band" class="gallery-item">
             </div>
         </div>
     </section>
@@ -323,17 +377,17 @@
             <h2>Merchandise</h2>
             <div class="merch-grid">
                 <div class="merch-item">
-                    <img src="images/491439005_17901699708170242_6885235243774906310_n..jpg" alt="Band T-Shirt">
+                    <img src="images/491439005_17901699708170242_6885235243774906310_n.jpg" alt="Zwart T-shirt met het Adolescence band logo">
                     <h3>Band Logo T-Shirt</h3>
                     <p class="price">€25.00</p>
                 </div>
                 <div class="merch-item">
-                    <img src="images/486790686_17899309317170242_700672190784094738_n..jpg" alt="Band Hoodie">
+                    <img src="images/486790686_17899309317170242_700672190784094738_n.jpg" alt="Grijze hoodie met album artwork op de rug">
                     <h3>Album Art Hoodie</h3>
                     <p class="price">€50.00</p>
                 </div>
                 <div class="merch-item">
-                    <img src="images/491017472_17902141881170242_4097284793726784552_n..jpg" alt="Band Cap">
+                    <img src="images/491017472_17902141881170242_4097284793726784552_n.jpg" alt="Zwarte pet met het Adolescence band logo op de voorkant">
                     <h3>Logo Cap</h3>
                     <p class="price">€20.00</p>
                 </div>
@@ -354,9 +408,9 @@
 
     <footer>
         <div class="social-icons">
-            <a href="#" target="_blank"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" style="filter: invert(1);"></a>
-            <a href="#" target="_blank"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook" style="filter: invert(1);"></a>
-            <a href="#" target="_blank"><img src="https://simpleicons.org/icons/tiktok.svg" alt="TikTok" style="filter: invert(1);"></a>
+            <a href="https://www.instagram.com/jouw_instagram_naam/" target="_blank" aria-label="Volg ons op Instagram"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram logo" style="filter: invert(1);"></a>
+            <a href="https://www.facebook.com/jouw_facebook_naam/" target="_blank" aria-label="Volg ons op Facebook"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook logo" style="filter: invert(1);"></a>
+            <a href="https://www.tiktok.com/@jouw_tiktok_naam" target="_blank" aria-label="Volg ons op TikTok"><img src="https://simpleicons.org/icons/tiktok.svg" alt="TikTok logo" style="filter: invert(1);"></a>
         </div>
         <p>© 2025 Adolescence. All Rights Reserved.</p>
     </footer>
