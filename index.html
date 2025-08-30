@@ -12,7 +12,7 @@
             --primary-color: #ffffff;
             --secondary-color: #aaaaaa;
             --background-color: #121212;
-            --accent-color: #ff4500; /* Oranje-rood als accentkleur */
+            --accent-color: #ff4500;
         }
 
         * {
@@ -96,7 +96,8 @@
         /* --- Hero Sectie --- */
         #home {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=Adolescence+Band+Photo') no-repeat center center/cover;
+            /* DEZE AFBEELDING IS GEKOZEN ALS JULLIE HOOFDFOTO */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/468484206_1337630357612760_3972109066225474041_n..jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -159,15 +160,15 @@
             gap: 1rem;
         }
 
-        .gallery-grid img {
+        .gallery-item {
             width: 100%;
-            height: 100%;
+            height: 300px; /* Vaste hoogte voor uniformiteit */
             object-fit: cover;
             border-radius: 5px;
             transition: transform 0.3s ease;
         }
         
-        .gallery-grid img:hover {
+        .gallery-item:hover {
             transform: scale(1.05);
         }
 
@@ -181,6 +182,8 @@
         
         .merch-item img {
             width: 100%;
+            height: 280px;
+            object-fit: cover;
             border-radius: 5px;
             margin-bottom: 1rem;
         }
@@ -220,7 +223,7 @@
         }
         
         .contact-link:hover {
-            background-color: #d13a00; /* Donkerder accentkleur */
+            background-color: #d13a00;
         }
         
         /* --- Footer --- */
@@ -277,7 +280,7 @@
             <h2>Our Music</h2>
             <div class="music-links">
                 <a href="#" target="_blank" class="music-link">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.17 14.283c-.202.32-.58.426-.898.224-2.633-1.63-5.92-1.89-9.84-.99-.387.09-.71-.163-.8-.55-.09-.387.163-.71.55-.8 4.29- .98 7.9- .69 10.82 1.1.32.202.426.58.224.898zm.9-2.69c-.25.398-.71.53-1.103.28-2.95-1.82-7.4-2.3-10.9-1.25-.466.13-.9-.15-1.03-.615-.13-.466.15-.9.615-1.03 3.9-.94 8.7-.44 11.95 1.6.4.247.53.71.28 1.103zm.1-2.88c-3.5-2.08-9.2-2.28-12.7.9- .53.22-1.12-.08-1.34-.6-.22-.53.08-1.12.6-1.34 4.02-2.88 10.32-2.63 14.32 1.25.48.28.63.88.35 1.36-.28.48-.88.63-1.36.35z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.17 14.283c-.202.32-.58.426-.898.224-2.633-1.63-5.92-1.89-9.84-.99-.387.09-.71-.163-.8-.55-.09-.387.163-.71.55-.8 4.29-.98 7.9-.69 10.82 1.1.32.202.426.58.224.898zm.9-2.69c-.25.398-.71.53-1.103.28-2.95-1.82-7.4-2.3-10.9-1.25-.466.13-.9-.15-1.03-.615-.13-.466.15-.9.615-1.03 3.9-.94 8.7-.44 11.95 1.6.4.247.53.71.28 1.103zm.1-2.88c-3.5-2.08-9.2-2.28-12.7.9-.53.22-1.12-.08-1.34-.6-.22-.53.08-1.12.6-1.34 4.02-2.88 10.32-2.63 14.32 1.25.48.28.63.88.35 1.36-.28.48-.88.63-1.36.35z"/></svg>
                     Spotify
                 </a>
                 <a href="#" target="_blank" class="music-link">
@@ -292,12 +295,25 @@
         <div class="container">
             <h2>Gallery</h2>
             <div class="gallery-grid">
-                <img src="https://via.placeholder.com/500x500/1a1a1a/ffffff?text=Live+Shot+1" alt="Band live foto 1">
-                <img src="https://via.placeholder.com/500x500/2a2a2a/ffffff?text=Live+Shot+2" alt="Band live foto 2">
-                <img src="https://via.placeholder.com/500x500/3a3a3a/ffffff?text=Promo+Shot+1" alt="Band promo foto 1">
-                <img src="https://via.placeholder.com/500x500/1a1a1a/ffffff?text=Behind+Scenes" alt="Achter de schermen">
-                <img src="https://via.placeholder.com/500x500/2a2a2a/ffffff?text=Promo+Shot+2" alt="Band promo foto 2">
-                <img src="https://via.placeholder.com/500x500/3a3a3a/ffffff?text=Live+Shot+3" alt="Band live foto 3">
+                <img src="images/467555942_1802739687129505_2360335379630859286_n..jpg" alt="Gallery image 1" class="gallery-item">
+                <img src="images/467762960_1809161503190234_6997691456845963636_n..jpg" alt="Gallery image 2" class="gallery-item">
+                <video controls class="gallery-item">
+                    <source src="images/AQOzMBMYaFSzifTJxmWf6D3ze-BgtKpeEYfnGpPEElky9xKRzEtW2UwLzRvF_B38PgqXzWYA7O4e9fjEwzpcL_ZYiLfBtXzH.mp4" type="video/mp4">
+                </video>
+                <img src="images/486790686_17899309317170242_700672190784094738_n..jpg" alt="Gallery image 3" class="gallery-item">
+                <video controls class="gallery-item">
+                    <source src="images/AQPuU5T1wLxfgTJWf9Hv3-ejt85A2vkbu1CjCDyxlhKRM_xHBcTtxBmE1y8oVpsyKfQfcFxthSq7pXBjNas9OxQe..mp4" type="video/mp4">
+                </video>
+                <img src="images/487409169_17899309299170242_7710075461797943807_n..jpg" alt="Gallery image 4" class="gallery-item">
+                <img src="images/491017472_17902141881170242_4097284793726784552_n..jpg" alt="Gallery image 5" class="gallery-item">
+                <img src="images/491431513_17901699717170242_42262469079254598_n..jpg" alt="Gallery image 6" class="gallery-item">
+                <img src="images/491439005_17901699708170242_6885235243774906310_n..jpg" alt="Gallery image 7" class="gallery-item">
+                <video controls class="gallery-item">
+                    <source src="images/AQNBrESAtxEu5vS5CtL8WmII1oSF1-8QgkV6UXX_N1iD7aE4Wdq_rTVxo8bY9i7qNPlrFVNcz_IBJTH-_h56ub4e4ysrTSfx.mp4" type="video/mp4">
+                </video>
+                <img src="images/491440142_17902141839170242_553274269014194057_n..jpg" alt="Gallery image 8" class="gallery-item">
+                <img src="images/491436259_17902141848170242_2048863188384419840_n..jpg" alt="Gallery image 9" class="gallery-item">
+                <img src="images/491446660_17902141791170242_8690501463541552480_n..jpg" alt="Gallery image 10" class="gallery-item">
             </div>
         </div>
     </section>
@@ -307,17 +323,17 @@
             <h2>Merchandise</h2>
             <div class="merch-grid">
                 <div class="merch-item">
-                    <img src="https://via.placeholder.com/500x500/1a1a1a/ffffff?text=T-Shirt+Design" alt="Band T-Shirt">
+                    <img src="images/491439005_17901699708170242_6885235243774906310_n..jpg" alt="Band T-Shirt">
                     <h3>Band Logo T-Shirt</h3>
                     <p class="price">€25.00</p>
                 </div>
                 <div class="merch-item">
-                    <img src="https://via.placeholder.com/500x500/2a2a2a/ffffff?text=Hoodie+Design" alt="Band Hoodie">
+                    <img src="images/486790686_17899309317170242_700672190784094738_n..jpg" alt="Band Hoodie">
                     <h3>Album Art Hoodie</h3>
                     <p class="price">€50.00</p>
                 </div>
                 <div class="merch-item">
-                    <img src="https://via.placeholder.com/500x500/3a3a3a/ffffff?text=Cap+Design" alt="Band Cap">
+                    <img src="images/491017472_17902141881170242_4097284793726784552_n..jpg" alt="Band Cap">
                     <h3>Logo Cap</h3>
                     <p class="price">€20.00</p>
                 </div>
@@ -338,11 +354,11 @@
 
     <footer>
         <div class="social-icons">
-             <a href="#" target="_blank"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" style="filter: invert(1);"></a>
+            <a href="#" target="_blank"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" style="filter: invert(1);"></a>
             <a href="#" target="_blank"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook" style="filter: invert(1);"></a>
             <a href="#" target="_blank"><img src="https://simpleicons.org/icons/tiktok.svg" alt="TikTok" style="filter: invert(1);"></a>
         </div>
-        <p>&copy; 2025 Adolescence. All Rights Reserved.</p>
+        <p>© 2025 Adolescence. All Rights Reserved.</p>
     </footer>
 
 </body>
