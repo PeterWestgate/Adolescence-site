@@ -34,7 +34,7 @@
         "https://music.apple.com/us/artist/adolescence/482058344",
         "https://www.deezer.com/en/album/835747162"
       ],
-      "logo": "images/logo.jpg", 
+      "logo": "images/logo.png", 
       "image": "images/main.jpg",
       "description": "Adolescence is een rockband die de grenzen tussen harde rock en alternatieve pop verkent met energieke live shows en emotionele teksten.",
       "genre": "Alternative Rock"
@@ -106,8 +106,18 @@
         .navbar .logo-container img {
             height: 100%; /* Maak de afbeelding 100% van de hoogte van de container */
             width: auto;
-            display: block;
+            transition: filter 0.4s ease;
+            display: block; /* Voorkomt extra ruimte onder de afbeelding */
         }
+        
+        /* AANGEPASTE LOGICA: Nu voor een WIT logo */
+        .navbar:not(.scrolled) .logo-container img {
+            filter: none; /* Logo is al wit, geen filter nodig */
+        }
+        .navbar.scrolled .logo-container img {
+            filter: brightness(0) invert(0); /* Maakt het witte logo donker (zwart) */
+        }
+        
         .navbar .logo-container .logo-text {
             /* Visueel verbergen maar toegankelijk houden */
             position: absolute;
@@ -436,7 +446,7 @@
 <body>
     <nav class="navbar" id="navbar">
         <a href="#home" class="logo-container" aria-label="Adolescence Homepage">
-            <img src="images/logo.jpg" alt="Adolescence Logo">
+            <img src="images/logo.png" alt="Adolescence Logo">
             <span class="logo-text" data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</span>
         </a>
         <ul class="nav-links">
