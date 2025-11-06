@@ -35,7 +35,7 @@
         "https://music.apple.com/us/artist/adolescence/482058344",
         "https://www.deezer.com/en/album/835747162"
       ],
-      "logo": "images/logo.png", 
+      "logo": "images/logo.jpg", <!-- AANGEPAST -->
       "image": "images/main.jpg",
       "description": "Adolescence is een rockband die de grenzen tussen harde rock en alternatieve pop verkent met energieke live shows en emotionele teksten.",
       "genre": "Alternative Rock"
@@ -112,12 +112,12 @@
             display: block; 
         }
         
-        /* Logica voor WIT logo */
+        /* AANGEPAST: Logica voor DONKER logo (logo.jpg) */
         .navbar:not(.scrolled) .logo-container img {
-            filter: none; /* Logo is al wit, geen filter nodig */
+            filter: brightness(0) invert(1); /* Maakt een donker logo wit */
         }
         .navbar.scrolled .logo-container img {
-            filter: brightness(0) invert(0); /* Maakt het witte logo donker (zwart) */
+            filter: none; /* Toont het donkere logo normaal */
         }
         
         .navbar .logo-container .logo-text {
@@ -484,7 +484,7 @@
 <body>
     <nav class="navbar" id="navbar">
         <a href="#home" class="logo-container" aria-label="Adolescence Homepage">
-            <img src="images/logo.png" alt="Adolescence Logo">
+            <img src="images/logo.jpg" alt="Adolescence Logo"> <!-- AANGEPAST NAAR .jpg -->
             <span class="logo-text" data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</span>
         </a>
         <ul class="nav-links">
@@ -535,7 +535,7 @@
                     </li>
                 </ul>
 
-                <!-- NIEUWE SECTIE: Afgelopen Optredens -->
+                <!-- AANGEPAST: Afgelopen Optredens -->
                 <h2 class="fade-up" data-lang-nl="Afgelopen Optredens" data-lang-en="Past Gigs" style="margin-top: 4rem; margin-bottom: 2rem;">Afgelopen Optredens</h2>
                 <ul class="tour-list fade-up past-gigs">
                     <li class="tour-item">
@@ -568,7 +568,17 @@
                 <button class="gallery-arrow" id="scroll-left" aria-label="Scroll links" data-lang-nl-aria-label="Scroll links" data-lang-en-aria-label="Scroll left">&lt;</button>
                 <div class="horizontal-scroll-wrapper" id="gallery-wrapper">
                     <div class="gallery-container" id="gallery-container">
-                        <!-- Galerij wordt nu opgebouwd door JavaScript -->
+                        <!-- AANGEPAST: Galerij is nu hardcoded en wordt geshuffled door JS -->
+                        <div class="gallery-item"><img src="images/IMG_20250419_224246.jpg" alt="Galerij foto 1" data-src="images/IMG_20250419_224246.jpg"></div>
+                        <div class="gallery-item"><img src="images/20250419_193737.jpg" alt="Galerij foto 2" data-src="images/20250419_193737.jpg"></div>
+                        <div class="gallery-item"><img src="images/20250419_193724.jpg" alt="Galerij foto 3" data-src="images/20250419_193724.jpg"></div>
+                        <div class="gallery-item"><img src="images/IMG-20250422-WA0001.jpg" alt="Galerij foto 4" data-src="images/IMG-20250422-WA0001.jpg"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-061.jpg" alt="Galerij foto 5" data-src="images/IFRVoorronde1-061.jpg"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-059.jpg" alt="Galerij foto 6" data-src="images/IFRVoorronde1-059.jpg"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-058.jpg" alt="Galerij foto 7" data-src="images/IFRVoorronde1-058.jpg"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-049.jpg" alt="Galerij foto 8" data-src="images/IFRVoorronde1-049.jpg"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-048.jpg" alt="Galerij foto 9" data-src="images/IFRVoorronde1-048.jpg"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-046.jpg" alt="Galerij foto 10" data-src="images/IFRVoorronde1-046.jpg"></div>
                     </div>
                 </div>
                 <button class="gallery-arrow" id="scroll-right" aria-label="Scroll rechts" data-lang-nl-aria-label="Scroll rechts" data-lang-en-aria-label="Scroll right">&gt;</button>
