@@ -9,23 +9,15 @@
     <meta name="description" data-lang-nl="Adolescence. Muziek als verhaal. Ontdek onze nieuwste single, tourdata en meer." data-lang-en="Adolescence. Music as a story. Discover our latest single, tour dates, and more.">
     <meta name="keywords" data-lang-nl="Adolescence, band, rock, alternatief, muziek, tourdata, nieuwe single" data-lang-en="Adolescence, band, rock, alternative, music, tour dates, new single">
     <meta name="author" content="Adolescence">
-    <link rel="canonical" href="https://www.adolescenceband.com/"> <!-- Pas dit aan naar je uiteindelijke domein -->
-
-    <!-- Meta tags voor social media (pas 'content' aan met je eigen URL) -->
-    <meta property="og:title" data-lang-nl="Adolescence | Officiële Website" data-lang-en="Adolescence | Official Website">
+    <link rel="canonical" href="https://www.adolescenceband.com/"> <!-- Pas dit aan naar je uiteindelijke domein --><!-- Meta tags voor social media (pas 'content' aan met je eigen URL) --><meta property="og:title" data-lang-nl="Adolescence | Officiële Website" data-lang-en="Adolescence | Official Website">
     <meta property="og:description" data-lang-nl="Ontdek de wereld van Adolescence. Luister nu." data-lang-en="Discover the world of Adolescence. Listen now.">
-    <meta property="og:image" content="images/main.jpg"> <!-- Zorgt dat je hoofdafbeelding wordt getoond -->
-    <meta property="og:url" content="https://www.adolescenceband.com/"> <!-- Pas dit aan -->
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/main.jpg"> <!-- Zorgt dat je hoofdafbeelding wordt getoond --><meta property="og:url" content="https://www.adolescenceband.com/"> <!-- Pas dit aan --><meta property="og:type" content="website">
     <meta property="og:site_name" content="Adolescence Official">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" data-lang-nl="Adolescence | Officiële Website" data-lang-en="Adolescence | Official Website">
     <meta name="twitter:description" data-lang-nl="Ontdek de wereld van Adolescence. Luister nu." data-lang-en="Discover the world of Adolescence. Listen now.">
-    <meta name="twitter:image" content="images/main.jpg"> <!-- Zorgt dat je hoofdafbeelding wordt getoond -->
-
-    <!-- Design: Elegante, high-contrast font-combinatie -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="twitter:image" content="images/main.jpg"> <!-- Zorgt dat je hoofdafbeelding wordt getoond --><!-- Design: Elegante, high-contrast font-combinatie --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
@@ -34,8 +26,7 @@
       "@context": "https://schema.org",
       "@type": "MusicGroup",
       "name": "Adolescence",
-      "url": "https://www.adolescenceband.com/", <!-- Pas dit aan -->
-      "sameAs": [
+      "url": "https://www.adolescenceband.com/", <!-- Pas dit aan -->"sameAs": [
         "https://open.spotify.com/artist/5vIq13jivwkzDpUWu3zp6T",
         "https://www.youtube.com/@AdolescenceTheBand",
         "https://www.instagram.com/adolescence_theband",
@@ -43,7 +34,7 @@
         "https://music.apple.com/us/artist/adolescence/482058344",
         "https://www.deezer.com/en/album/835747162"
       ],
-      "logo": "images/logo-placeholder.png", <!-- Suggestie: voeg een logo toe -->
+      "logo": "images/logo.jpg", 
       "image": "images/main.jpg",
       "description": "Adolescence is een rockband die de grenzen tussen harde rock en alternatieve pop verkent met energieke live shows en emotionele teksten.",
       "genre": "Alternative Rock"
@@ -86,7 +77,7 @@
             transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
         }
         /* Standaard (boven hero) */
-        .navbar .logo, .navbar .nav-links li a, .navbar .language-switcher a { color: var(--background-color); }
+        .navbar .logo-container, .navbar .nav-links li a, .navbar .language-switcher a { color: var(--background-color); }
         .navbar .language-switcher a { color: rgba(240, 240, 240, 0.7); }
         .navbar .language-switcher a.active { color: var(--background-color); }
         .navbar .hamburger .bar { background-color: var(--background-color); }
@@ -97,12 +88,39 @@
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(26, 26, 26, 0.1);
         }
-        .navbar.scrolled .logo, .navbar.scrolled .nav-links li a, .navbar.scrolled .language-switcher a { color: var(--text-color); }
+        .navbar.scrolled .logo-container, .navbar.scrolled .nav-links li a, .navbar.scrolled .language-switcher a { color: var(--text-color); }
         .navbar.scrolled .language-switcher a { color: rgba(26, 26, 26, 0.6); }
         .navbar.scrolled .language-switcher a.active { color: var(--text-color); }
         .navbar.scrolled .hamburger .bar { background-color: var(--text-color); }
 
-        .navbar .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; text-decoration: none; transition: color 0.4s ease; }
+        .navbar .logo-container { 
+            font-family: var(--font-heading); 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            transition: color 0.4s ease;
+            height: 40px; /* Vaste hoogte voor logo */
+            display: flex;
+            align-items: center;
+        }
+        .navbar .logo-container img {
+            height: 100%; /* Maak de afbeelding 100% van de hoogte van de container */
+            width: auto;
+            display: block;
+        }
+        .navbar .logo-container .logo-text {
+            /* Visueel verbergen maar toegankelijk houden */
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .navbar .nav-links { display: flex; list-style: none; gap: 2.5rem; }
         .navbar .nav-links li a { text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s ease; }
         .navbar .nav-links li a:hover { color: var(--accent-color) !important; }
@@ -388,7 +406,8 @@
             .hamburger .bar { display: block; width: 28px; height: 2px; margin: 6px auto; transition: all 0.3s ease-in-out; }
             .navbar:not(.scrolled) .hamburger .bar { background-color: var(--background-color); }
             .navbar.scrolled .hamburger .bar { background-color: var(--text-color); }
-            .navbar .logo { order: 1; font-size: 1.5rem; }
+            .navbar .logo-container { order: 1; font-size: 1.5rem; }
+            .navbar .logo-container img { height: 30px; } /* Kleinere logo op mobiel */
             .language-switcher { order: 2; margin-left: auto; margin-right: 1rem; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -414,7 +433,10 @@
 </head>
 <body>
     <nav class="navbar" id="navbar">
-        <a href="#home" class="logo" data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</a>
+        <a href="#home" class="logo-container" aria-label="Adolescence Homepage">
+            <img src="images/logo.jpg" alt="Adolescence Logo">
+            <span class="logo-text" data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</span>
+        </a>
         <ul class="nav-links">
             <li><a href="#tour" data-lang-nl="Live" data-lang-en="Live">Live</a></li>
             <li><a href="#gallery" data-lang-nl="Galerij" data-lang-en="Gallery">Galerij</a></li>
@@ -475,14 +497,18 @@
                     <div class="gallery-container">
                         <!-- 
                             Hier komen je galerij afbeeldingen. 
-                            Vervang deze placeholders met je eigen foto's uit de /images/ map.
-                            Kopieer de lijn hieronder voor elke nieuwe foto.
+                            De placeholders zijn vervangen door de bestanden die je hebt opgegeven.
                         -->
-                        <div class="gallery-item"><img src="images/gallery1.jpg" alt="Live foto 1" onerror="this.src='https://images.pexels.com/photos/1916817/pexels-photo-1916817.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/gallery2.jpg" alt="Studio foto" onerror="this.src='https://images.pexels.com/photos/7524833/pexels-photo-7524833.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/gallery3.jpg" alt="Portret foto" onerror="this.src='https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/gallery4.jpg" alt="Backstage foto" onerror="this.src='https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/gallery5.jpg" alt="Live foto 2" onerror="this.src='https://images.pexels.com/photos/2111015/pexels-photo-2111015.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
+                        <div class="gallery-item"><img src="images/IMG_20250419_224246.jpg" alt="Galerij foto 1" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+1'"></div>
+                        <div class="gallery-item"><img src="images/20250419_193737.jpg" alt="Galerij foto 2" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+2'"></div>
+                        <div class="gallery-item"><img src="images/20250419_193724.jpg" alt="Galerij foto 3" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+3'"></div>
+                        <div class="gallery-item"><img src="images/IMG-20250422-WA0001.jpg" alt="Galerij foto 4" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+4'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-061.jpg" alt="Galerij foto 5" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+5'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-059.jpg" alt="Galerij foto 6" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+6'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-058.jpg" alt="Galerij foto 7" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+7'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-049.jpg" alt="Galerij foto 8" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+8'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-048.jpg" alt="Galerij foto 9" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+9'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-046.jpg" alt="Galerij foto 10" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+10'"></div>
                     </div>
                 </div>
                 <button class="gallery-arrow" id="scroll-right" aria-label="Scroll rechts" data-lang-nl-aria-label="Scroll rechts" data-lang-en-aria-label="Scroll right">&gt;</button>
@@ -495,7 +521,7 @@
                 <p data-lang-nl="Adolescence is meer dan een naam; het is het gevoel dat we nooit zijn kwijtgeraakt. Geïnspireerd door de rauwe intensiteit van '90s rock en de meeslepende energie van moderne soundscapes, vertalen we de zoektocht naar identiteit in een chaotische wereld. Onze muziek is geen ontsnapping, maar een catharsis. Eerlijk, luid en zonder compromis. Dit is ons verhaal." data-lang-en="Adolescence is more than a name; it's the feeling we never lost. Inspired by the raw intensity of '90s rock and the immersive energy of modern soundscapes, we translate the search for identity in a chaotic world. Our music is not an escape, but a catharsis. Honest, loud, and without compromise. This is our story.">
                     Adolescence is meer dan een naam; het is het gevoel dat we nooit zijn kwijtgeraakt. Geïnspireerd door de rauwe intensiteit van '90s rock en de meeslepende energie van moderne soundscapes, vertalen we de zoektocht naar identiteit in een chaotische wereld. Onze muziek is geen ontsnapping, maar een catharsis. Eerlijk, luid en zonder compromis. Dit is ons verhaal.
                 </p>
-                <img src="images/about-band.jpg" alt="Foto van de band Adolescence" onerror="this.src='https://images.pexels.com/photos/3783471/pexels-photo-3783471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'">
+                <img src="images/about-band.jpg" alt="Foto van de band Adolescence">
             </div>
         </section>
     </main>
@@ -515,12 +541,11 @@
         </div>
         
         <div class="booking-form-wrapper fade-up">
-            <!-- Google Form Embed Code -->
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVfHBtiQyE3JAW2iQ6NdWUEqLxtjXa9jKIgh722eTtGzDlCA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <!-- Google Form Embed Code --><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVfHBtiQyE3JAW2iQ6NdWUEqLxtjXa9jKIgh722eTtGzDlCA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
 
         <p class="contact-alternative fade-up" data-lang-nl="Liever direct contact? Stuur ons een e-mail." data-lang-en="Prefer direct contact? Send us an email.">
-            Liever direct contact? <a href="mailto:contact@adolescenceband.com">Stuur ons een e-mail</a>.
+            Liever direct contact? <a href="mailto:adolescencetheband@gmail.com">Stuur ons een e-mail</a>.
         </p>
 
         <div class="social-icons fade-up">
