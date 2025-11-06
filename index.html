@@ -99,7 +99,7 @@
             font-weight: 700; 
             text-decoration: none; 
             transition: color 0.4s ease;
-            height: 40px; /* Vaste hoogte voor logo */
+            height: 80px; /* AANGEPAST: 2x zo groot (was 40px) */
             display: flex;
             align-items: center;
         }
@@ -289,7 +289,9 @@
             object-fit: cover;
             transition: transform 0.4s ease;
         }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item:hover img { 
+            transform: scale(1.1); /* AANGEPAST: Grotere zoom */
+        }
 
 
         /* --- Over Ons --- */
@@ -407,7 +409,7 @@
             .navbar:not(.scrolled) .hamburger .bar { background-color: var(--background-color); }
             .navbar.scrolled .hamburger .bar { background-color: var(--text-color); }
             .navbar .logo-container { order: 1; font-size: 1.5rem; }
-            .navbar .logo-container img { height: 30px; } /* Kleinere logo op mobiel */
+            .navbar .logo-container img { height: 60px; } /* AANGEPAST: 2x zo groot (was 30px) */
             .language-switcher { order: 2; margin-left: auto; margin-right: 1rem; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -544,8 +546,10 @@
             <!-- Google Form Embed Code --><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVfHBtiQyE3JAW2iQ6NdWUEqLxtjXa9jKIgh722eTtGzDlCA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
 
-        <p class="contact-alternative fade-up" data-lang-nl="Liever direct contact? Stuur ons een e-mail." data-lang-en="Prefer direct contact? Send us an email.">
-            Liever direct contact? <a href="mailto:adolescencetheband@gmail.com">Stuur ons een e-mail</a>.
+        <p class="contact-alternative fade-up" 
+           data-lang-nl="Liever direct contact? Stuur ons een e-mail naar <a href='mailto:adolescencetheband@gmail.com'>adolescencetheband@gmail.com</a>." 
+           data-lang-en="Prefer direct contact? Send us an email at <a href='mailto:adolescencetheband@gmail.com'>adolescencetheband@gmail.com</a>.">
+            Liever direct contact? Stuur ons een e-mail naar <a href="mailto:adolescencetheband@gmail.com">adolescencetheband@gmail.com</a>.
         </p>
 
         <div class="social-icons fade-up">
@@ -601,7 +605,8 @@
                 document.querySelectorAll('[data-lang-nl]').forEach(element => {
                     const content = element.getAttribute(`data-lang-${lang}`);
                     if (content) {
-                        if (element.classList.contains('tour-venue')) {
+                        // AANGEPAST: Sta HTML toe in tour-venue EN contact-alternative
+                        if (element.classList.contains('tour-venue') || element.classList.contains('contact-alternative')) {
                             element.innerHTML = content;
                         } else {
                             element.textContent = content;
@@ -666,8 +671,21 @@
             const galleryWrapper = document.getElementById('gallery-wrapper');
             const scrollLeftBtn = document.getElementById('scroll-left');
             const scrollRightBtn = document.getElementById('scroll-right');
+            let galleryItemWidth = 0; // Variabele om de scroll-afstand in op te slaan
 
             if (galleryWrapper) {
+                
+                const calculateScrollAmount = () => {
+                    const galleryItem = document.querySelector('.gallery-item');
+                    if (galleryItem) {
+                        const style = window.getComputedStyle(galleryItem.parentElement);
+                        const gap = parseFloat(style.gap) || 0;
+                        galleryItemWidth = galleryItem.offsetWidth + gap;
+                    } else {
+                        galleryItemWidth = 300; // Fallback
+                    }
+                };
+
                 const checkScroll = () => {
                     // Alleen uitvoeren op schermen breder dan 767px
                     if (window.innerWidth <= 767) {
@@ -675,6 +693,9 @@
                         scrollRightBtn.style.display = 'none';
                         return;
                     }
+
+                    // Herbereken de breedte bij resize
+                    calculateScrollAmount();
 
                     const scrollWidth = galleryWrapper.scrollWidth;
                     const clientWidth = galleryWrapper.clientWidth;
@@ -696,17 +717,20 @@
                     }
                 };
 
-                // Wacht even tot de layout stabiel is
-                setTimeout(checkScroll, 500);
+                // Wacht even tot de layout stabiel is en bereken dan de scroll-afstand
+                setTimeout(() => {
+                    calculateScrollAmount(); // Eerste berekening
+                    checkScroll(); // Check de pijltjes
+                }, 500);
 
                 galleryWrapper.addEventListener('scroll', checkScroll);
-                window.addEventListener('resize', checkScroll);
+                window.addEventListener('resize', checkScroll); // Resize herberekent al
 
                 scrollLeftBtn.addEventListener('click', () => {
-                    galleryWrapper.scrollBy({ left: -300, behavior: 'smooth' });
+                    galleryWrapper.scrollBy({ left: -galleryItemWidth, behavior: 'smooth' });
                 });
                 scrollRightBtn.addEventListener('click', () => {
-                    galleryWrapper.scrollBy({ left: 300, behavior: 'smooth' });
+                    galleryWrapper.scrollBy({ left: galleryItemWidth, behavior: 'smooth' });
                 });
             }
 
