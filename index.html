@@ -7,6 +7,7 @@
     <title data-lang-nl="Adolescence | Officiële Website" data-lang-en="Adolescence | Official Website">Adolescence | Officiële Website</title>
     
     <meta name="description" data-lang-nl="Adolescence. Muziek als verhaal. Ontdek onze nieuwste single, tourdata en meer." data-lang-en="Adolescence. Music as a story. Discover our latest single, tour dates, and more.">
+    <!-- ... (rest van de head, ongewijzigd) ... -->
     <meta name="keywords" data-lang-nl="Adolescence, band, rock, alternatief, muziek, tourdata, nieuwe single" data-lang-en="Adolescence, band, rock, alternative, music, tour dates, new single">
     <meta name="author" content="Adolescence">
     <link rel="canonical" href="https://www.adolescenceband.com/"> <!-- Pas dit aan naar je uiteindelijke domein --><!-- Meta tags voor social media (pas 'content' aan met je eigen URL) --><meta property="og:title" data-lang-nl="Adolescence | Officiële Website" data-lang-en="Adolescence | Official Website">
@@ -218,11 +219,11 @@
             opacity: 1;
         }
 
-        /* --- Tourdata (AANGEPAST) --- */
+        /* --- Tourdata --- */
         .tour-list { list-style: none; }
         .tour-item {
             display: grid;
-            grid-template-columns: 1fr 2fr; /* AANGEPAST: 2 kolommen */
+            grid-template-columns: 1fr 2fr; /* 2 kolommen */
             gap: 1rem; padding: 1.5rem;
             border-bottom: 1px solid rgba(26, 26, 26, 0.15);
             align-items: center; transition: background-color 0.3s ease;
@@ -231,11 +232,7 @@
         .tour-date { font-weight: 700; font-size: 1.1rem; }
         .tour-venue { font-size: 1.2rem; font-family: var(--font-heading); }
         .tour-venue span { display: block; font-size: 1rem; opacity: 0.7; font-family: var(--font-body); }
-        .tour-tickets a {
-            display: none; /* AANGEPAST: Knop is nu verborgen */
-        }
         
-        /* NIEUW: Stijl voor afgelopen optredens */
         .past-gigs {
             opacity: 0.7;
         }
@@ -244,7 +241,7 @@
         }
 
 
-        /* --- Galerij met Pijltjes --- */
+        /* --- Galerij met Pijltjes (AANGEPAST VOOR RATIO) --- */
         #gallery { padding: 6rem 0; background-color: #fff; }
         #gallery h2 { padding: 0 2rem; }
         
@@ -288,8 +285,10 @@
         }
         .gallery-item {
             flex: 0 0 auto;
-            width: 40vw; max-width: 500px;
-            height: 60vh; overflow: hidden;
+            height: 60vh; /* Vaste hoogte */
+            width: auto;   /* Breedte past zich aan */
+            overflow: hidden;
+            cursor: pointer;
         }
         .gallery-item img {
             width: 100%; height: 100%;
@@ -297,9 +296,8 @@
             transition: transform 0.4s ease;
         }
         .gallery-item:hover img { 
-            transform: scale(1.1); /* Grotere zoom */
+            transform: scale(1.1); 
         }
-
 
         /* --- Over Ons --- */
         .about-container { text-align: center; }
@@ -309,7 +307,7 @@
             height: auto; margin-top: 2rem;
         }
 
-        /* --- Footer (AANGEPAST) --- */
+        /* --- Footer --- */
         footer { background-color: var(--dark-bg); color: var(--background-color); padding: 5rem 2rem; text-align: center; }
         
         .booking-header {
@@ -358,7 +356,7 @@
         .contact-alternative {
             color: var(--background-color);
             opacity: 0.8;
-            margin-top: -1rem; /* Dichter bij het formulier */
+            margin-top: -1rem; 
             margin-bottom: 3rem;
         }
         .contact-alternative a {
@@ -398,6 +396,43 @@
         .fade-up.visible { opacity: 1; transform: translateY(0); }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+        /* --- Lightbox Stijl --- */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none; /* Standaard verborgen */
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            cursor: pointer; /* Klik overal om te sluiten */
+        }
+        #lightbox.visible {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            cursor: default; /* Voorkom dubbele cursor */
+        }
+        #lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-decoration: none;
+            line-height: 1;
+            cursor: pointer;
+        }
+
         @media (max-width: 767px) {
             section { padding: 4rem 0; }
             .container { padding: 1rem; }
@@ -428,14 +463,17 @@
             .tour-item { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
             .tour-date { margin-bottom: 0.5rem; } /* Betere spacing op mobiel */
 
+            /* AANGEPAST: Galerij op mobiel */
+            .horizontal-scroll-wrapper { overflow-x: auto; } /* Blijft horizontaal scrollen */
             .gallery-container { 
-                display: grid; 
-                grid-template-columns: 1fr; 
-                width: auto; 
+                display: flex; 
+                width: max-content; 
                 padding: 0 1rem;
             }
-            .horizontal-scroll-wrapper { overflow-x: hidden; }
-            .gallery-item { width: 100%; height: 40vh; }
+            .gallery-item { 
+                width: 70vw; /* Toont 1 en een beetje, moedigt scrollen aan */
+                height: 50vh; /* Iets kleiner op mobiel */
+            }
             .gallery-arrow { display: none !important; } /* Verberg pijlen op mobiel */
             
             .booking-form-wrapper { margin: 1.5rem auto 2rem auto; }
@@ -529,22 +567,8 @@
             <div class="gallery-slider-container fade-up">
                 <button class="gallery-arrow" id="scroll-left" aria-label="Scroll links" data-lang-nl-aria-label="Scroll links" data-lang-en-aria-label="Scroll left">&lt;</button>
                 <div class="horizontal-scroll-wrapper" id="gallery-wrapper">
-                    <div class="gallery-container">
-                        <!-- 
-                            Hier komen je galerij afbeeldingen. 
-                            Vervang deze placeholders met je eigen foto's uit de /images/ map.
-                            Kopieer de lijn hieronder voor elke nieuwe foto (bv. images/jouw-foto.jpg).
-                        -->
-                        <div class="gallery-item"><img src="images/IMG_20250419_224246.jpg" alt="Galerij foto 1" onerror="this.src='https://images.pexels.com/photos/1916817/pexels-photo-1916817.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/20250419_193737.jpg" alt="Galerij foto 2" onerror="this.src='https://images.pexels.com/photos/7524833/pexels-photo-7524833.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/20250419_193724.jpg" alt="Galerij foto 3" onerror="this.src='https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/IMG-20250422-WA0001.jpg" alt="Galerij foto 4" onerror="this.src='https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-061.jpg" alt="Galerij foto 5" onerror="this.src='https://images.pexels.com/photos/2111015/pexels-photo-2111015.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-059.jpg" alt="Galerij foto 6"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-058.jpg" alt="Galerij foto 7"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-049.jpg" alt="Galerij foto 8"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-048.jpg" alt="Galerij foto 9"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-046.jpg" alt="Galerij foto 10"></div>
+                    <div class="gallery-container" id="gallery-container">
+                        <!-- Galerij wordt nu opgebouwd door JavaScript -->
                     </div>
                 </div>
                 <button class="gallery-arrow" id="scroll-right" aria-label="Scroll rechts" data-lang-nl-aria-label="Scroll rechts" data-lang-en-aria-label="Scroll right">&gt;</button>
@@ -609,6 +633,12 @@
         </div>
         <p data-lang-nl="© 2025 Adolescence" data-lang-en="© 2025 Adolescence">© 2025 Adolescence</p>
     </footer>
+
+    <!-- Lightbox HTML -->
+    <div id="lightbox">
+        <a href="#" id="lightbox-close">&times;</a>
+        <img id="lightbox-img" src="">
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -701,34 +731,76 @@
                 });
             }
 
-            // --- Gallery Scroll Buttons (AANGEPAST voor 1-op-1 scroll) ---
-            const galleryWrapper = document.getElementById('gallery-wrapper');
-            const scrollLeftBtn = document.getElementById('scroll-left');
-            const scrollRightBtn = document.getElementById('scroll-right');
-            let galleryItemWidth = 0; // Wordt dynamisch berekend
+            // --- AANGEPAST: Galerij Logica ---
+            
+            // 1. Shuffle de galerij-items die in de HTML staan
+            const galleryContainer = document.getElementById('gallery-container');
+            if (galleryContainer) {
+                let items = Array.from(galleryContainer.children);
+                // Shuffle logic
+                for (let i = items.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [items[i], items[j]] = [items[j], items[i]];
+                }
+                // Leeg de container en voeg de geschudde items opnieuw toe
+                galleryContainer.innerHTML = '';
+                items.forEach(item => galleryContainer.appendChild(item));
+            }
 
-            if (galleryWrapper) {
-                
-                const calculateScrollAmount = () => {
-                    const firstGalleryItem = document.querySelector('.gallery-item');
-                    if (firstGalleryItem) {
-                        const style = window.getComputedStyle(firstGalleryItem.parentElement);
-                        const gap = parseFloat(style.gap) || 0; // 2rem (32px)
-                        galleryItemWidth = firstGalleryItem.offsetWidth + gap;
-                    } else {
-                        galleryItemWidth = 300; // Fallback
-                    }
+            // 2. Activeer de lightbox
+            attachLightboxListeners();
+
+            // 3. Activeer de scroll-knoppen
+            initializeGalleryScroll();
+
+
+            // --- Functie om de lightbox te activeren ---
+            function attachLightboxListeners() {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const lightboxClose = document.getElementById('lightbox-close');
+                const galleryItems = document.querySelectorAll('.gallery-item');
+
+                if (!lightbox || !lightboxImg || !lightboxClose) return;
+
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const img = item.querySelector('img');
+                        const fullSrc = img.dataset.src || img.src; // Pak de data-src
+                        lightboxImg.setAttribute('src', fullSrc);
+                        lightbox.classList.add('visible');
+                    });
+                });
+
+                const closeLightbox = (e) => {
+                    e.preventDefault();
+                    lightbox.classList.remove('visible');
+                    lightboxImg.setAttribute('src', ''); // Voorkom "flash"
                 };
+
+                lightboxClose.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox(e);
+                    }
+                });
+            }
+
+            // --- Galerij scroll-logica ---
+            function initializeGalleryScroll() {
+                const galleryWrapper = document.getElementById('gallery-wrapper');
+                const scrollLeftBtn = document.getElementById('scroll-left');
+                const scrollRightBtn = document.getElementById('scroll-right');
+
+                if (!galleryWrapper || !scrollLeftBtn || !scrollRightBtn) return;
                 
                 const checkScroll = () => {
+                    // Verberg pijlen op mobiel
                     if (window.innerWidth <= 767) {
                         scrollLeftBtn.style.display = 'none';
                         scrollRightBtn.style.display = 'none';
                         return;
                     }
-
-                    // Herbereken breedte voor het geval het venster is aangepast
-                    calculateScrollAmount();
 
                     const scrollWidth = galleryWrapper.scrollWidth;
                     const clientWidth = galleryWrapper.clientWidth;
@@ -749,17 +821,17 @@
                     }
                 };
 
-                // Wacht even tot de layout stabiel is (afbeeldingen geladen)
                 setTimeout(checkScroll, 500);
-
                 galleryWrapper.addEventListener('scroll', checkScroll);
-                window.addEventListener('resize', checkScroll); // Herbereken bij resize
+                window.addEventListener('resize', checkScroll); 
 
                 scrollLeftBtn.addEventListener('click', () => {
-                    galleryWrapper.scrollBy({ left: -galleryItemWidth, behavior: 'smooth' });
+                    const scrollAmount = galleryWrapper.clientWidth * 0.8; // Scroll 80%
+                    galleryWrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 });
                 scrollRightBtn.addEventListener('click', () => {
-                    galleryWrapper.scrollBy({ left: galleryItemWidth, behavior: 'smooth' });
+                    const scrollAmount = galleryWrapper.clientWidth * 0.8; // Scroll 80%
+                    galleryWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 });
             }
 
