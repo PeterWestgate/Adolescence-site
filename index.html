@@ -75,9 +75,10 @@
             z-index: 1000; display: flex;
             justify-content: space-between; align-items: center;
             transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
+            height: calc(80px + 3rem); /* AANGEPAST: Hoogte navbalk op basis van logo */
         }
         /* Standaard (boven hero) */
-        .navbar .logo-container, .navbar .nav-links li a, .navbar .language-switcher a { color: var(--background-color); }
+        .navbar .nav-links li a, .navbar .language-switcher a { color: var(--background-color); }
         .navbar .language-switcher a { color: rgba(240, 240, 240, 0.7); }
         .navbar .language-switcher a.active { color: var(--background-color); }
         .navbar .hamburger .bar { background-color: var(--background-color); }
@@ -88,7 +89,7 @@
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(26, 26, 26, 0.1);
         }
-        .navbar.scrolled .logo-container, .navbar.scrolled .nav-links li a, .navbar.scrolled .language-switcher a { color: var(--text-color); }
+        .navbar.scrolled .nav-links li a, .navbar.scrolled .language-switcher a { color: var(--text-color); }
         .navbar.scrolled .language-switcher a { color: rgba(26, 26, 26, 0.6); }
         .navbar.scrolled .language-switcher a.active { color: var(--text-color); }
         .navbar.scrolled .hamburger .bar { background-color: var(--text-color); }
@@ -99,18 +100,18 @@
             font-weight: 700; 
             text-decoration: none; 
             transition: color 0.4s ease;
-            height: 80px; /* AANGEPAST: 2x zo groot (was 40px) */
+            height: 80px; /* Logo hoogte */
             display: flex;
             align-items: center;
         }
         .navbar .logo-container img {
-            height: 100%; /* Maak de afbeelding 100% van de hoogte van de container */
+            height: 100%; 
             width: auto;
             transition: filter 0.4s ease;
-            display: block; /* Voorkomt extra ruimte onder de afbeelding */
+            display: block; 
         }
         
-        /* AANGEPASTE LOGICA: Nu voor een WIT logo */
+        /* Logica voor WIT logo */
         .navbar:not(.scrolled) .logo-container img {
             filter: none; /* Logo is al wit, geen filter nodig */
         }
@@ -119,16 +120,9 @@
         }
         
         .navbar .logo-container .logo-text {
-            /* Visueel verbergen maar toegankelijk houden */
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
         }
 
         .navbar .nav-links { display: flex; list-style: none; gap: 2.5rem; }
@@ -141,7 +135,6 @@
         #home {
             min-height: 100vh;
             padding: 0;
-            /* Laadt images/main.jpg. De fallback is een simpele donkere kleur */
             background-color: var(--dark-bg);
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/main.jpg') no-repeat center center/cover;
             display: flex; flex-direction: column;
@@ -225,11 +218,11 @@
             opacity: 1;
         }
 
-        /* --- Tourdata --- */
+        /* --- Tourdata (AANGEPAST) --- */
         .tour-list { list-style: none; }
         .tour-item {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-columns: 1fr 2fr; /* AANGEPAST: 2 kolommen */
             gap: 1rem; padding: 1.5rem;
             border-bottom: 1px solid rgba(26, 26, 26, 0.15);
             align-items: center; transition: background-color 0.3s ease;
@@ -239,13 +232,17 @@
         .tour-venue { font-size: 1.2rem; font-family: var(--font-heading); }
         .tour-venue span { display: block; font-size: 1rem; opacity: 0.7; font-family: var(--font-body); }
         .tour-tickets a {
-            display: block; padding: 0.8rem;
-            border: 2px solid var(--text-color);
-            color: var(--text-color);
-            text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;
-            text-align: center; transition: all 0.3s ease;
+            display: none; /* AANGEPAST: Knop is nu verborgen */
         }
-        .tour-tickets a:hover { background-color: var(--text-color); color: var(--background-color); }
+        
+        /* NIEUW: Stijl voor afgelopen optredens */
+        .past-gigs {
+            opacity: 0.7;
+        }
+        .past-gigs .tour-item:hover {
+            background-color: transparent; /* Geen hover-effect */
+        }
+
 
         /* --- Galerij met Pijltjes --- */
         #gallery { padding: 6rem 0; background-color: #fff; }
@@ -300,7 +297,7 @@
             transition: transform 0.4s ease;
         }
         .gallery-item:hover img { 
-            transform: scale(1.1); /* AANGEPAST: Grotere zoom */
+            transform: scale(1.1); /* Grotere zoom */
         }
 
 
@@ -312,7 +309,7 @@
             height: auto; margin-top: 2rem;
         }
 
-        /* --- Footer --- */
+        /* --- Footer (AANGEPAST) --- */
         footer { background-color: var(--dark-bg); color: var(--background-color); padding: 5rem 2rem; text-align: center; }
         
         .booking-header {
@@ -404,7 +401,11 @@
         @media (max-width: 767px) {
             section { padding: 4rem 0; }
             .container { padding: 1rem; }
-            .navbar { padding: 1rem; }
+            .navbar { 
+                padding: 1rem; 
+                height: calc(60px + 2rem); /* Aangepaste mobiele hoogte */
+            }
+            .navbar .logo-container { height: 60px; } /* Mobiele logo hoogte */
             .navbar .nav-links {
                 display: none; flex-direction: column; position: absolute;
                 top: 100%; left: 0; width: 100%;
@@ -418,15 +419,14 @@
             .hamburger .bar { display: block; width: 28px; height: 2px; margin: 6px auto; transition: all 0.3s ease-in-out; }
             .navbar:not(.scrolled) .hamburger .bar { background-color: var(--background-color); }
             .navbar.scrolled .hamburger .bar { background-color: var(--text-color); }
-            .navbar .logo-container { order: 1; font-size: 1.5rem; }
-            .navbar .logo-container img { height: 60px; } /* AANGEPAST: 2x zo groot (was 30px) */
+            .navbar .logo-container { order: 1; }
             .language-switcher { order: 2; margin-left: auto; margin-right: 1rem; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
             
             .tour-item { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
-            .tour-tickets { margin-top: 1rem; }
+            .tour-date { margin-bottom: 0.5rem; } /* Betere spacing op mobiel */
 
             .gallery-container { 
                 display: grid; 
@@ -458,7 +458,7 @@
         <div class="language-switcher">
             <a href="#" class="lang-link active" data-lang="nl">NL</a><span>/</span><a href="#" class="lang-link" data-lang="en">EN</a>
         </div>
-        <button class="hamburger" aria-label="Toggle navigation menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <button class="hamburger" aria-label="Toggle navigation menu" data-lang-nl-aria-label="Navigatiemenu wisselen" data-lang-en-aria-label="Toggle navigation menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
     </nav>
 
     <main>
@@ -490,12 +490,35 @@
                     <li class="tour-item">
                         <div class="tour-date" data-lang-nl="03 DEC 2025" data-lang-en="DEC 03, 2025">03 DEC 2025</div>
                         <div class="tour-venue" data-lang-nl="Seminarie Leo XIII<span>Vesaliusstraat 2, 3000 Leuven, BE</span>" data-lang-en="Seminarie Leo XIII<span>Vesaliusstraat 2, 3000 Leuven, BE</span>">Seminarie Leo XIII<span>Vesaliusstraat 2, 3000 Leuven, BE</span></div>
-                        <div class="tour-tickets"><a href="#" data-lang-nl="Info" data-lang-en="Info">Info</a></div>
                     </li>
                     <li class="tour-item">
                         <div class="tour-date" data-lang-nl="18 MRT 2026" data-lang-en="MAR 18, 2026">18 MRT 2026</div>
                         <div class="tour-venue" data-lang-nl="Seminarie Leo XIII<span>Vesaliusstraat 2, 3000 Leuven, BE</span>" data-lang-en="Seminarie Leo XIII<span>Vesaliusstraat 2, 3000 Leuven, BE</span>">Seminarie Leo XIII<span>Vesaliusstraat 2, 3000 Leuven, BE</span></div>
-                        <div class="tour-tickets"><a href="#" data-lang-nl="Info" data-lang-en="Info">Info</a></div>
+                    </li>
+                </ul>
+
+                <!-- NIEUWE SECTIE: Afgelopen Optredens -->
+                <h2 class="fade-up" data-lang-nl="Afgelopen Optredens" data-lang-en="Past Gigs" style="margin-top: 4rem; margin-bottom: 2rem;">Afgelopen Optredens</h2>
+                <ul class="tour-list fade-up past-gigs">
+                    <li class="tour-item">
+                        <div class="tour-date">11.05.25</div>
+                        <div class="tour-venue" data-lang-nl="Akabe Heverlee<span>Leuven, BE</span>" data-lang-en="Akabe Heverlee<span>Leuven, BE</span>">Akabe Heverlee<span>Leuven, BE</span></div>
+                    </li>
+                    <li class="tour-item">
+                        <div class="tour-date">21.04.25</div>
+                        <div class="tour-venue" data-lang-nl="Interfacultaire Rockrally finale<span>Leuven, BE</span>" data-lang-en="Interfacultaire Rockrally finale<span>Leuven, BE</span>">Interfacultaire Rockrally finale<span>Leuven, BE</span></div>
+                    </li>
+                    <li class="tour-item">
+                        <div class="tour-date">19.04.25</div>
+                        <div class="tour-venue" data-lang-nl="Jincolor Run<span>Rotselaar, BE</span>" data-lang-en="Jincolor Run<span>Rotselaar, BE</span>">Jincolor Run<span>Rotselaar, BE</span></div>
+                    </li>
+                    <li class="tour-item">
+                        <div class="tour-date">30.03.25</div>
+                        <div class="tour-venue" data-lang-nl="Galabal SocA<span>Leuven, BE</span>" data-lang-en="Galabal SocA<span>Leuven, BE</span>">Galabal SocA<span>Leuven, BE</span></div>
+                    </li>
+                    <li class="tour-item">
+                        <div class="tour-date">19.11.24</div>
+                        <div class="tour-venue" data-lang-nl="Interfacultaire Rockrally voorronde<span>Leuven, BE</span>" data-lang-en="Interfacultaire Rockrally voorronde<span>Leuven, BE</span>">Interfacultaire Rockrally voorronde<span>Leuven, BE</span></div>
                     </li>
                 </ul>
             </div>
@@ -509,18 +532,19 @@
                     <div class="gallery-container">
                         <!-- 
                             Hier komen je galerij afbeeldingen. 
-                            De placeholders zijn vervangen door de bestanden die je hebt opgegeven.
+                            Vervang deze placeholders met je eigen foto's uit de /images/ map.
+                            Kopieer de lijn hieronder voor elke nieuwe foto (bv. images/jouw-foto.jpg).
                         -->
-                        <div class="gallery-item"><img src="images/IMG_20250419_224246.jpg" alt="Galerij foto 1" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+1'"></div>
-                        <div class="gallery-item"><img src="images/20250419_193737.jpg" alt="Galerij foto 2" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+2'"></div>
-                        <div class="gallery-item"><img src="images/20250419_193724.jpg" alt="Galerij foto 3" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+3'"></div>
-                        <div class="gallery-item"><img src="images/IMG-20250422-WA0001.jpg" alt="Galerij foto 4" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+4'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-061.jpg" alt="Galerij foto 5" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+5'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-059.jpg" alt="Galerij foto 6" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+6'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-058.jpg" alt="Galerij foto 7" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+7'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-049.jpg" alt="Galerij foto 8" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+8'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-048.jpg" alt="Galerij foto 9" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+9'"></div>
-                        <div class="gallery-item"><img src="images/IFRVoorronde1-046.jpg" alt="Galerij foto 10" onerror="this.src='https://placehold.co/600x800/f0f0f0/1a1a1a?text=Foto+10'"></div>
+                        <div class="gallery-item"><img src="images/IMG_20250419_224246.jpg" alt="Galerij foto 1" onerror="this.src='https://images.pexels.com/photos/1916817/pexels-photo-1916817.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
+                        <div class="gallery-item"><img src="images/20250419_193737.jpg" alt="Galerij foto 2" onerror="this.src='https://images.pexels.com/photos/7524833/pexels-photo-7524833.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
+                        <div class="gallery-item"><img src="images/20250419_193724.jpg" alt="Galerij foto 3" onerror="this.src='https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
+                        <div class="gallery-item"><img src="images/IMG-20250422-WA0001.jpg" alt="Galerij foto 4" onerror="this.src='https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-061.jpg" alt="Galerij foto 5" onerror="this.src='https://images.pexels.com/photos/2111015/pexels-photo-2111015.jpeg?auto=compress&cs=tinysrgb&w=800'"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-059.jpg" alt="Galerij foto 6"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-058.jpg" alt="Galerij foto 7"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-049.jpg" alt="Galerij foto 8"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-048.jpg" alt="Galerij foto 9"></div>
+                        <div class="gallery-item"><img src="images/IFRVoorronde1-046.jpg" alt="Galerij foto 10"></div>
                     </div>
                 </div>
                 <button class="gallery-arrow" id="scroll-right" aria-label="Scroll rechts" data-lang-nl-aria-label="Scroll rechts" data-lang-en-aria-label="Scroll right">&gt;</button>
@@ -533,7 +557,7 @@
                 <p data-lang-nl="Adolescence is meer dan een naam; het is het gevoel dat we nooit zijn kwijtgeraakt. Geïnspireerd door de rauwe intensiteit van '90s rock en de meeslepende energie van moderne soundscapes, vertalen we de zoektocht naar identiteit in een chaotische wereld. Onze muziek is geen ontsnapping, maar een catharsis. Eerlijk, luid en zonder compromis. Dit is ons verhaal." data-lang-en="Adolescence is more than a name; it's the feeling we never lost. Inspired by the raw intensity of '90s rock and the immersive energy of modern soundscapes, we translate the search for identity in a chaotic world. Our music is not an escape, but a catharsis. Honest, loud, and without compromise. This is our story.">
                     Adolescence is meer dan een naam; het is het gevoel dat we nooit zijn kwijtgeraakt. Geïnspireerd door de rauwe intensiteit van '90s rock en de meeslepende energie van moderne soundscapes, vertalen we de zoektocht naar identiteit in een chaotische wereld. Onze muziek is geen ontsnapping, maar een catharsis. Eerlijk, luid en zonder compromis. Dit is ons verhaal.
                 </p>
-                <img src="images/about-band.jpg" alt="Foto van de band Adolescence">
+                <img src="images/about-band.jpg" alt="Foto van de band Adolescence" onerror="this.src='https://images.pexels.com/photos/3783471/pexels-photo-3783471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'">
             </div>
         </section>
     </main>
@@ -553,7 +577,8 @@
         </div>
         
         <div class="booking-form-wrapper fade-up">
-            <!-- Google Form Embed Code --><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVfHBtiQyE3JAW2iQ6NdWUEqLxtjXa9jKIgh722eTtGzDlCA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <!-- Google Form Embed Code -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVfHBtiQyE3JAW2iQ6NdWUEqLxtjXa9jKIgh722eTtGzDlCA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
 
         <p class="contact-alternative fade-up" 
@@ -615,7 +640,6 @@
                 document.querySelectorAll('[data-lang-nl]').forEach(element => {
                     const content = element.getAttribute(`data-lang-${lang}`);
                     if (content) {
-                        // AANGEPAST: Sta HTML toe in tour-venue EN contact-alternative
                         if (element.classList.contains('tour-venue') || element.classList.contains('contact-alternative')) {
                             element.innerHTML = content;
                         } else {
@@ -677,34 +701,33 @@
                 });
             }
 
-            // --- Gallery Scroll Buttons ---
+            // --- Gallery Scroll Buttons (AANGEPAST voor 1-op-1 scroll) ---
             const galleryWrapper = document.getElementById('gallery-wrapper');
             const scrollLeftBtn = document.getElementById('scroll-left');
             const scrollRightBtn = document.getElementById('scroll-right');
-            let galleryItemWidth = 0; // Variabele om de scroll-afstand in op te slaan
+            let galleryItemWidth = 0; // Wordt dynamisch berekend
 
             if (galleryWrapper) {
                 
                 const calculateScrollAmount = () => {
-                    const galleryItem = document.querySelector('.gallery-item');
-                    if (galleryItem) {
-                        const style = window.getComputedStyle(galleryItem.parentElement);
-                        const gap = parseFloat(style.gap) || 0;
-                        galleryItemWidth = galleryItem.offsetWidth + gap;
+                    const firstGalleryItem = document.querySelector('.gallery-item');
+                    if (firstGalleryItem) {
+                        const style = window.getComputedStyle(firstGalleryItem.parentElement);
+                        const gap = parseFloat(style.gap) || 0; // 2rem (32px)
+                        galleryItemWidth = firstGalleryItem.offsetWidth + gap;
                     } else {
                         galleryItemWidth = 300; // Fallback
                     }
                 };
-
+                
                 const checkScroll = () => {
-                    // Alleen uitvoeren op schermen breder dan 767px
                     if (window.innerWidth <= 767) {
                         scrollLeftBtn.style.display = 'none';
                         scrollRightBtn.style.display = 'none';
                         return;
                     }
 
-                    // Herbereken de breedte bij resize
+                    // Herbereken breedte voor het geval het venster is aangepast
                     calculateScrollAmount();
 
                     const scrollWidth = galleryWrapper.scrollWidth;
@@ -712,7 +735,6 @@
                     const scrollLeft = galleryWrapper.scrollLeft;
 
                     // Toon/verberg rechterpijl
-                    // -10 om rekening te houden met subpixel rendering
                     if (scrollWidth > clientWidth && scrollLeft < (scrollWidth - clientWidth - 10)) {
                         scrollRightBtn.style.display = 'block';
                     } else {
@@ -727,14 +749,11 @@
                     }
                 };
 
-                // Wacht even tot de layout stabiel is en bereken dan de scroll-afstand
-                setTimeout(() => {
-                    calculateScrollAmount(); // Eerste berekening
-                    checkScroll(); // Check de pijltjes
-                }, 500);
+                // Wacht even tot de layout stabiel is (afbeeldingen geladen)
+                setTimeout(checkScroll, 500);
 
                 galleryWrapper.addEventListener('scroll', checkScroll);
-                window.addEventListener('resize', checkScroll); // Resize herberekent al
+                window.addEventListener('resize', checkScroll); // Herbereken bij resize
 
                 scrollLeftBtn.addEventListener('click', () => {
                     galleryWrapper.scrollBy({ left: -galleryItemWidth, behavior: 'smooth' });
