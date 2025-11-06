@@ -112,12 +112,12 @@
             display: block; 
         }
         
-        /* AANGEPAST: Logica voor DONKER logo (logo.png) */
+        /* AANGEPAST: Logica voor WIT logo (logo.png) */
         .navbar:not(.scrolled) .logo-container img {
-            filter: brightness(0) invert(1); /* Maakt een donker logo wit */
+            filter: none; /* Logo is al wit, geen filter nodig */
         }
         .navbar.scrolled .logo-container img {
-            filter: none; /* Toont het donkere logo normaal */
+            filter: brightness(0) invert(0); /* Maakt het witte logo donker (zwart) */
         }
         
         .navbar .logo-container .logo-text {
@@ -484,7 +484,7 @@
 <body>
     <nav class="navbar" id="navbar">
         <a href="#home" class="logo-container" aria-label="Adolescence Homepage">
-            <img src="images/logo.png" alt="Adolescence Logo"> <!-- AANGEPAST NAAR .jpg -->
+            <img src="images/logo.png" alt="Adolescence Logo"> <!-- AANGEPAST NAAR .png -->
             <span class="logo-text" data-lang-nl="Adolescence" data-lang-en="Adolescence">Adolescence</span>
         </a>
         <ul class="nav-links">
@@ -579,6 +579,9 @@
                         <div class="gallery-item"><img src="images/IFRVoorronde1-049.jpg" alt="Galerij foto 8" data-src="images/IFRVoorronde1-049.jpg"></div>
                         <div class="gallery-item"><img src="images/IFRVoorronde1-048.jpg" alt="Galerij foto 9" data-src="images/IFRVoorronde1-048.jpg"></div>
                         <div class="gallery-item"><img src="images/IFRVoorronde1-046.jpg" alt="Galerij foto 10" data-src="images/IFRVoorronde1-046.jpg"></div>
+                        <div class="gallery-item"><img src="images/491440142_17902141839170242_553274269014194057_n..jpg" alt="Galerij foto 11" data-src="images/491440142_17902141839170242_553274269014194057_n..jpg"></div>
+                        <div class="gallery-item"><img src="images/468484206_1337630357612760_3972109066225474041_n..jpg" alt="Galerij foto 12" data-src="images/468484206_1337630357612760_3972109066225474041_n..jpg"></div>
+                        <div class="gallery-item"><img src="images/467555942_1802739687129505_2360335379630859286_n..jpg" alt="Galerij foto 13" data-src="images/467555942_1802739687129505_2360335379630859286_n..jpg"></div>
                     </div>
                 </div>
                 <button class="gallery-arrow" id="scroll-right" aria-label="Scroll rechts" data-lang-nl-aria-label="Scroll rechts" data-lang-en-aria-label="Scroll right">&gt;</button>
